@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: cbfe9d75a258eb643bc5bd3c57100bdc
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - rock: {fileID: 100000, guid: 33f75ff24c49e3f48a154f7c00efd4a6, type: 2}
+  - bomb: {fileID: 100000, guid: e86b713f5d48f844ebc07a4a202a4f30, type: 2}
+  - oil: {fileID: 100000, guid: 7c94e9b4131cd4747810910049d03273, type: 2}
+  - cannon1: {instanceID: 0}
+  - cannon2: {instanceID: 0}
+  - cannon3: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 

@@ -8,14 +8,10 @@ public class ClickNDrag_script : MonoBehaviour {
 	public GameObject dragTarget;
 
 	//Origin position
-	float OriginX;
-	float OriginY;
-	float OriginZ;
+	Vector3 Origin;
 
 	//Tem bullet position
-	float bulletPositionX;
-	float bulletPositionY;
-	float bulletPositionZ;
+	Vector3 bulletPosition;
 
 	//vars for dragging visual effect
 	public float DragBackSpeed;
@@ -24,91 +20,151 @@ public class ClickNDrag_script : MonoBehaviour {
 
 
 	// vars for determining the spring force
-	public float springingforce;
+	public float springForce;
 	public float forceMultiplier;
+	public float MaxForce =1150f;
+
+	//vars for making it shake
+	float shakingSpeed = 1.0f;
 
 	//vars for checking if the mouse is hovering and selected
 	bool isHovering = false;
 	bool isSelected = false;
 
+	//vars for controlling the springing angle of the bullet
+	float originMouseX;
+	float currentMonseX;
+	float minMouseXChange;
+	float maxMouseXChange;
+	float mouseXChanged;
+
+
+
 
 	// Use this for initialization
 	void Start () {
-		OriginX = dragTarget.transform.position.x;
-		OriginY = dragTarget.transform.position.y;
-		OriginZ = dragTarget.transform.position.z;
+
+		Origin = dragTarget.transform.position;
+
+	
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
+
+
 		//keep the vector 3 updated
-		bulletPositionX = dragTarget.transform.position.x;
-		bulletPositionY = dragTarget.transform.position.y;
-		bulletPositionZ = dragTarget.transform.position.z;
+		bulletPosition = gameObject.transform.position;
+		//keep the current mouse x updated
+		currentMonseX = Input.mousePosition.x;
+		//keep getting the 
+	
+		//get the current mouse postion x
+		if (Input.GetMouseButtonDown(0)){
+			originMouseX = Input.mousePosition.x;
+		}
 
 
+		//if the mouse is hovering this object
 		if (isHovering == true) {
-			//if the mouse is hovering this 
 			Drag();
 		}
 
-		//When releasing mouse click, run springing function
-		if(Input.GetMouseButtonUp(0) && isSelected == true){
+		//make the hovered bullet selected
+		if (Input.GetMouseButtonDown(0) && isHovering){
+			this.isSelected = true;
+
+		}
+
+
+		StartDragging ();
+
+		//When releasing mouse click, run spring function
+		if(Input.GetMouseButtonUp(0) && isSelected){
 
 			Spring();
 		}
 
+		if (Input.GetMouseButtonDown (1)) {
+				
+			BackToPosition();
+		
+		}
 	}
 
 	void Drag(){
 
 		//When clicking on a shootable object, run draging function
-		if(Input.GetMouseButton(0)){
 
-			isSelected = true;
+		if(Input.GetMouseButtonDown(0)){
+
+
 			StartDragging();
 
-		}
-		
-
-		
-		// back to postion
-		if(Input.GetMouseButtonDown(1)){
-			//zero out all forces
-			rigidbody.velocity = Vector3.zero;
-			rigidbody.angularVelocity = Vector3.zero;
-			//disable gravity
-			gameObject.rigidbody.useGravity = false;
-			//back to position
-			BackToPosition();
 		}
 	}
 
 	void StartDragging(){
+		// increase the drag force
+			if (isSelected == true) {
+						//limit the spring force
+						if (springForce < MaxForce) {
+								//simulate the slingshot, move back, add force
+				gameObject.transform.position = new Vector3 (bulletPosition.x + (Input.GetAxis("Mouse X"))*0.1f , bulletPosition.y - DragDownSpeed / 200
+				                                             , bulletPosition.z - DragBackSpeed / 100);
+								springForce += forceMultiplier * Time.deltaTime * 2;
+						}
 
-		gameObject.transform.position = new Vector3(bulletPositionX, bulletPositionY - DragDownSpeed, bulletPositionZ - DragBackSpeed);
+						
+				}
 
-	}
+			
+	
+		}
 
 	void Spring(){
+		//spring when the force is over 200 so that the bullet won't stay on the base
+		if (springForce > 200){
+
 		//add the force to the bullet
-		gameObject.rigidbody.AddForce(Vector3.forward * springingforce);
-		gameObject.rigidbody.AddForce(Vector3.up * springingforce/4);
+		gameObject.rigidbody.AddForce((Origin - gameObject.transform.position).normalized * springForce);
+		gameObject.rigidbody.AddForce(Vector3.up * springForce/8);
 		//enable gravity
 		gameObject.rigidbody.useGravity = true;
 		//unselect the bullet
 		isSelected = false;
+		
+		}
+		//back to the origin position when the force is less than 200
+		else if (springForce < 200){
+
+			BackToPosition();
+			isSelected = false;
+		}
 	}
 
 	void BackToPosition(){
-		//back to postion(for testing)
-		gameObject.transform.position = new Vector3(OriginX,OriginY,OriginZ);
+
+		//zero out all forces
+			gameObject.rigidbody.velocity = Vector3.zero;
+			gameObject.rigidbody.angularVelocity = Vector3.zero;
+
+		//disable gravity
+			gameObject.rigidbody.useGravity = false;
+			
+			
+		
+
+		//back to postion(for testing only)
+		gameObject.transform.position = new Vector3(Origin.x,Origin.y,Origin.z);
+		gameObject.transform.rotation = Quaternion.identity;
+		springForce = 0;
+
 	}
 
 	void OnMouseEnter(){
 		isHovering = true;
-
 	}
 
 	void OnMouseExit(){
