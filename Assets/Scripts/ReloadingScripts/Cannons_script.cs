@@ -39,30 +39,22 @@ public class Cannons_script : MonoBehaviour {
 	void Update () {
 
 		if (!c1HasBullet) {
-			float t = 0f;
-			t += 1*Time.deltaTime;
-			if(t>=rockReloadTime){
-				ReloadRock();
-				t=0;
-			}
+
+			Invoke("ReloadBomb",rockReloadTime);
+
+
 		}
 
 		if (!c2HasBullet) {
-			float t = 0f;
-			t += 1*Time.deltaTime;
-			if(t>=bombReloadTime){
-				ReloadBomb();
-				t=0;
+
+			Invoke("ReloadBomb",bombReloadTime);
+
 			}
-		}
+
 
 		if (!c3HasBullet) {
-			float t = 0f;
-			t += 1*Time.deltaTime;
-			if(t>=oilReloadTime){
-				ReloadOil();
-				t=0;
-			}
+
+			Invoke("ReloadBomb",oilReloadTime);
 		}
 	
 	}

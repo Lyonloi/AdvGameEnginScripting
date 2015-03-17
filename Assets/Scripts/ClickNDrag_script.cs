@@ -5,7 +5,7 @@ public class ClickNDrag_script : MonoBehaviour {
 
 
 
-	public GameObject dragTarget;
+
 
 	//Origin position
 	Vector3 Origin;
@@ -44,7 +44,7 @@ public class ClickNDrag_script : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		Origin = dragTarget.transform.position;
+		Origin = gameObject.transform.position;
 
 	
 	}

@@ -28,7 +28,7 @@ public class EnemySpawning_script : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		Debug.Log(SpawningCount);
+
 
 		SpawningCount += 1 * Time.deltaTime;
 
