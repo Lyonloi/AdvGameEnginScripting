@@ -20,9 +20,9 @@ public class Cannons_script : MonoBehaviour {
 
 
 	//Setting reloading times
-	public int rockReloadTime;
-	public int bombReloadTime;
-	public int oilReloadTime;
+	public float rockReloadTime;
+	public float bombReloadTime;
+	public float oilReloadTime;
 
 	// Use this for initialization
 	void Start () {
@@ -40,21 +40,22 @@ public class Cannons_script : MonoBehaviour {
 
 		if (!c1HasBullet) {
 
-			Invoke("ReloadBomb",rockReloadTime);
-
+			Invoke("ReloadRock",rockReloadTime);
+			c1HasBullet = true;
 
 		}
 
 		if (!c2HasBullet) {
 
 			Invoke("ReloadBomb",bombReloadTime);
-
+			c2HasBullet = true;
 			}
 
 
 		if (!c3HasBullet) {
 
-			Invoke("ReloadBomb",oilReloadTime);
+			Invoke("ReloadOil",oilReloadTime);
+			c3HasBullet = true;
 		}
 	
 	}

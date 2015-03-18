@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{B97B0CEA-6B82-D61D-6CBA-6BF0D0E4BA0C}</ProjectGuid>
+	<ProjectGuid>{143C5AEE-37F4-343E-18AB-907365AA8179}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -50,11 +50,13 @@
      <Compile Include="Assets\Scripts\EnemyScripts\EnemyAttack_script.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\EnemyMovement_script.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\EnemySpawning_script.cs" />
+     <Compile Include="Assets\Scripts\EventListener.cs" />
      <Compile Include="Assets\Scripts\GameManager_script.cs" />
      <Compile Include="Assets\Scripts\ReloadingScripts\Cannons_script.cs" />
      <Compile Include="Assets\Scripts\ReloadingScripts\bulletCatcher_script.cs" />
+     <Compile Include="Assets\Scripts\delegate21.cs" />
  <Reference Include="Assembly-UnityScript-firstpass">
- <HintPath>C:/Users/HonPan/Documents/GitHub/GameEngineProject/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
+ <HintPath>C:/Users/LYON/Documents/GitHub/AdvGameEnginScripting/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
@@ -62,7 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass-vs.csproj">
-      <Project>{0DD5DB6E-E9BA-079F-AFD5-9DF9575F05DB}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
+      <Project>{DFFCD594-8642-B10A-FF7C-A8771570BBDE}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

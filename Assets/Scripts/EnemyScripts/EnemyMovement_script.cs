@@ -50,6 +50,7 @@ public class EnemyMovement_script : MonoBehaviour {
 		if (C.tag == "wall"||C.tag == "enemy"||C.tag == "rock") {
 
 			isMoving = false;
+			gameObject.rigidbody.useGravity = true;
 		}
 
 		if (C.tag == "bullet"){
