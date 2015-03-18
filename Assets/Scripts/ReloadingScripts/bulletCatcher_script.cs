@@ -23,9 +23,11 @@ public class bulletCatcher_script : MonoBehaviour {
 				} 
 		else if (C.tag == "bomb") {
 			Cs.BombOut ();
+			Destroy(C.gameObject);
 				} 
-		else if (C.tag == "bomb") {
+		else if (C.tag == "oil") {
 			Cs.OilOut();
+			Destroy(C.gameObject);
 		}
 	}
 }
