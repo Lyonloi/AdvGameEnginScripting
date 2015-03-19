@@ -21,6 +21,10 @@ public class GameManager_script : MonoBehaviour {
 		//keep the HP and Score Updated
 		gateHP_T.text = "Gate Condition: " + gateHP + "%";
 		score_T.text = "Score: " + score;
+
+		if (score >= 500) {
+			Application.LoadLevel(1);	
+		}
 	}
 
 	public void HPDown (){
