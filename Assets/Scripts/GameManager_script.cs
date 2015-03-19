@@ -23,7 +23,7 @@ public class GameManager_script : MonoBehaviour {
 		score_T.text = "Score: " + score;
 
 		if (score >= 500) {
-			Application.LoadLevel(1);	
+			Application.LoadLevel(2);	
 		}
 	}
 
