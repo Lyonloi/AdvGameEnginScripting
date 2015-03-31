@@ -1,11 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ReloadingScripts\bulletCatcher_script.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\EnemyScripts\EnemyMovement_script.cs">
     <Files>
-      <File FileName="Assets\Scripts\ReloadingScripts\Cannons_script.cs" Line="58" Column="6" />
-      <File FileName="Assets\Scripts\EnemyScripts\EnemyMovement_script.cs" Line="65" Column="1" />
-      <File FileName="Assets\Scripts\ClickNDrag_script.cs" Line="114" Column="64" />
-      <File FileName="Assets\Scripts\ReloadingScripts\bulletCatcher_script.cs" Line="28" Column="25" />
+      <File FileName="Assets\Scripts\EnemyScripts\EnemyMovement_script.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
