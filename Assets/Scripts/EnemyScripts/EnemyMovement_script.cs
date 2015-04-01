@@ -53,11 +53,18 @@ public class EnemyMovement_script : MonoBehaviour {
 			gameObject.rigidbody.useGravity = true;
 		}
 
-		if (C.tag == "bullet"){
+		else if (C.tag == "bullet"){
 
 			Destroy(gameObject);
 			GMs.AddScore();
 		}
+
+		else if (C.tag == "explosion"){
+			
+			Destroy(gameObject);
+			GMs.AddScore();
+		}
+
 	}
 
 
