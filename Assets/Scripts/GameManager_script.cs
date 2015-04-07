@@ -28,10 +28,12 @@ public class GameManager_script : MonoBehaviour {
 	}
 
 	public void HPDown (){
+		//decreases the gate HP
 		gateHP--;
 	}
 
 	public void AddScore(){
+		//increases the score
 		score += 100;
 	}
 }

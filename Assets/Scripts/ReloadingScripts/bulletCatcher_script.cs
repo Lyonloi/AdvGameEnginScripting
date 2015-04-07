@@ -7,7 +7,11 @@ public class bulletCatcher_script : MonoBehaviour {
 	public Cannons_script Cs;
 
 	//reference the explosion prefeb
-	public GameObject explosion;
+	public GameObject bombExplosion;
+	public GameObject oilExplosion;
+	public GameObject targetOil;
+	bool isCleaning = false;
+
 
 	// Use this for initialization
 	void Start () {
@@ -16,7 +20,28 @@ public class bulletCatcher_script : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if (isCleaning == true) {
+			CleanUpOil();
+		}
+	}
+
+	void CleanUpOil(){
+		// if there is a oil, clean it up;
+		if (targetOil != null) {
+			targetOil.transform.Translate(Vector3.down*Time.deltaTime*0.25f);
+
+		}
+	}
+
+	void DestroyOil(){
+		if (targetOil != null) {
+			Destroy (targetOil);
+			isCleaning = false;
+		}
+	}
+
+	void turnOnCleaning(){
+		isCleaning = true;
 	}
 
 	void OnTriggerEnter(Collider C){
@@ -33,13 +58,16 @@ public class bulletCatcher_script : MonoBehaviour {
 			//tell the cannon that it can reload a bomb
 			Cs.BombOut ();
 			//make an explosion
-			Instantiate(explosion, C.gameObject.transform.position, C.gameObject.transform.rotation);
+			Instantiate(bombExplosion, C.gameObject.transform.position, C.gameObject.transform.rotation);
 			Destroy(C.gameObject);
 
 				} 
 		else if (C.tag == "oil") {
 			Cs.OilOut();
+			Instantiate(oilExplosion, new Vector3(C.gameObject.transform.position.x, 0.01f, C.gameObject.transform.position.z), C.gameObject.transform.rotation);
 			Destroy(C.gameObject);
+			targetOil = GameObject.FindGameObjectWithTag("oilOnGround");
+			Invoke("turnOnCleaning", 2.5f);
 		}
 	}
 }

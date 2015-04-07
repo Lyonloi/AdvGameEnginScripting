@@ -17,6 +17,10 @@ public class EnemyMovement_script : MonoBehaviour {
 
 	//vars for changing status of the enemy
 	public bool isMoving = true;
+	public bool isAttacking = false;
+
+	//var for targeting a gameobject to destory
+	public GameObject attackTarget;
 
 	// Use this for initialization
 	void Start () {
@@ -35,37 +39,72 @@ public class EnemyMovement_script : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+		//keep this unit moving if isMoving is true
 		if (isMoving == true) {
 			Move();	
 		}
 	}
 
 	void Move(){
+		//make this unit moves along with X
 		tempX = tempX - movingSpeed;
 		transform.position = new Vector3(tempX,tempY, tempZ);
 	}
 
-	void OnTriggerEnter(Collider C){
-		if (C.tag == "wall"||C.tag == "enemy"||C.tag == "rock") {
-
-			isMoving = false;
-			gameObject.rigidbody.useGravity = true;
-		}
-
-		else if (C.tag == "bullet"){
-
-			Destroy(gameObject);
-			GMs.AddScore();
-		}
-
-		else if (C.tag == "explosion"){
-			
-			Destroy(gameObject);
-			GMs.AddScore();
-		}
-
+	void MoveAgain(){
+		//make this unit moves again
+		isMoving = true;
 	}
 
+	void DestoryObstacle(){
+		//destroy an obstacle if there is one
+		if (attackTarget != null) {
+						Destroy (attackTarget);
+				}
+	}
 
+	void OnTriggerEnter(Collider C){
+
+		//if this unit touches any of these trigger 
+		if (isMoving == true && C.tag == "wall"||C.tag == "enemy"||C.tag == "rock") {
+			//stop moving
+			isMoving = false;
+			gameObject.rigidbody.useGravity = true;
+			//if Collider C is a rock
+			if (C.tag == "rock"){
+				//make Collider C as the attackTarget and destory it after a few second
+				attackTarget = C.gameObject;
+				Invoke("DestoryObstacle",2.75f);
+				//start moving again
+				Invoke("MoveAgain",3f);
+
+			}
+
+
+		}
+		//if Collider C is a bullet, get destoried 
+		if (C.tag == "bullet"){
+
+			Destroy(gameObject);
+			//add Score
+			GMs.AddScore();
+		}
+		//if Collider C is an explosion, get destoried
+		if (C.tag == "explosion"){
+			
+			Destroy(gameObject);
+			//add Score
+			GMs.AddScore();
+		}
+
+		if (C.tag == "oilOnGround") {
+			movingSpeed = 0.01f;
+		}
+	}
+
+	void OnTriggerExit(Collider C){
+		if (C.tag == "oilOnGround") {
+			movingSpeed = 0.02f;
+		}
+	}
 }
