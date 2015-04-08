@@ -58,16 +58,17 @@ public class bulletCatcher_script : MonoBehaviour {
 			//tell the cannon that it can reload a bomb
 			Cs.BombOut ();
 			//make an explosion
-			Instantiate(bombExplosion, C.gameObject.transform.position, C.gameObject.transform.rotation);
+			Instantiate(bombExplosion, C.gameObject.transform.position, new Quaternion());
 			Destroy(C.gameObject);
 
 				} 
 		else if (C.tag == "oil") {
 			Cs.OilOut();
-			Instantiate(oilExplosion, new Vector3(C.gameObject.transform.position.x, 0.01f, C.gameObject.transform.position.z), C.gameObject.transform.rotation);
+			Instantiate(oilExplosion, new Vector3(C.gameObject.transform.position.x, 0.01f, C.gameObject.transform.position.z), new Quaternion());
 			Destroy(C.gameObject);
 			targetOil = GameObject.FindGameObjectWithTag("oilOnGround");
 			Invoke("turnOnCleaning", 2.5f);
 		}
+
 	}
 }
