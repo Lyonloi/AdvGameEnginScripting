@@ -2,6 +2,9 @@
 using System.Collections;
 
 public class EnemyMovement_script : MonoBehaviour {
+	//vars for audio
+	AudioSource scored;
+
 	//Vars for refencing this to GameManager
 	GameManager_script GMs;
 	GameObject GM;
@@ -35,6 +38,10 @@ public class EnemyMovement_script : MonoBehaviour {
 		tempX = CurrentPosition.position.x;
 		tempY = CurrentPosition.position.y;
 		tempZ = CurrentPosition.position.z;
+
+		//referece the audio source
+		scored = gameObject.GetComponent<AudioSource> ();
+
 	}
 	
 	// Update is called once per frame
@@ -46,21 +53,26 @@ public class EnemyMovement_script : MonoBehaviour {
 	}
 
 	void Move(){
-		//make this unit moves along with X
-		tempX = tempX - movingSpeed;
-		transform.position = new Vector3(tempX,tempY, tempZ);
+		//make this unit moves 
+		transform.Translate (Vector3.right * Time.deltaTime * movingSpeed);
 	}
 
 	void MoveAgain(){
 		//make this unit moves again
+		gameObject.transform.Translate(Vector3.back *Time.deltaTime);
 		isMoving = true;
 	}
 
 	void DestoryObstacle(){
 		//destroy an obstacle if there is one
 		if (attackTarget != null) {
-						Destroy (attackTarget);
+			Destroy (attackTarget);
+
 				}
+	}
+
+	public void PlayAudio(){
+		scored.Play ();
 	}
 
 	void OnTriggerEnter(Collider C){
@@ -70,8 +82,10 @@ public class EnemyMovement_script : MonoBehaviour {
 			//stop moving
 			isMoving = false;
 			gameObject.rigidbody.useGravity = true;
+
+
 			//if Collider C is a rock
-			if (C.tag == "rock"){
+			if (C.tag == "rock" && isAttacking != true){
 				//make Collider C as the attackTarget and destory it after a few second
 				attackTarget = C.gameObject;
 				Invoke("DestoryObstacle",2.75f);
@@ -86,25 +100,26 @@ public class EnemyMovement_script : MonoBehaviour {
 		if (C.tag == "bullet"){
 
 			Destroy(gameObject);
+
 			//add Score
 			GMs.AddScore();
-		}
-		//if Collider C is an explosion, get destoried
-		if (C.tag == "explosion"){
-			
-			Destroy(gameObject);
-			//add Score
-			GMs.AddScore();
+
+			//play the audio
+			PlayAudio();
 		}
 
+
 		if (C.tag == "oilOnGround") {
-			movingSpeed = 0.01f;
+			movingSpeed = 0.2f;
 		}
 	}
 
 	void OnTriggerExit(Collider C){
 		if (C.tag == "oilOnGround") {
-			movingSpeed = 0.02f;
+			movingSpeed = 1f;
+		}
+		if (C.tag == "enemy") {
+			Invoke("MoveAgain",1f);
 		}
 	}
 }

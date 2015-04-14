@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class ClickNDrag_script : MonoBehaviour {
 
-
+	//vars for audio
+	AudioSource shoot;
 
 
 
@@ -29,14 +30,9 @@ public class ClickNDrag_script : MonoBehaviour {
 
 	//vars for checking if the mouse is hovering and selected
 	bool isHovering = false;
-	bool isSelected = false;
+	public bool isSelected = false;
 
-	//vars for controlling the springing angle of the bullet
-	float originMouseX;
-	float currentMonseX;
-	float minMouseXChange;
-	float maxMouseXChange;
-	float mouseXChanged;
+
 
 
 
@@ -44,9 +40,10 @@ public class ClickNDrag_script : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+		//store the original position of the bullet
 		Origin = gameObject.transform.position;
 
-	
+		shoot = gameObject.GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
@@ -56,14 +53,8 @@ public class ClickNDrag_script : MonoBehaviour {
 
 		//keep the vector 3 updated
 		bulletPosition = gameObject.transform.position;
-		//keep the current mouse x updated
-		currentMonseX = Input.mousePosition.x;
-		//keep getting the 
+
 	
-		//get the current mouse postion x
-		if (Input.GetMouseButtonDown(0)){
-			originMouseX = Input.mousePosition.x;
-		}
 
 
 		//if the mouse is hovering this object
@@ -86,11 +77,7 @@ public class ClickNDrag_script : MonoBehaviour {
 			Spring();
 		}
 
-		if (Input.GetMouseButtonDown (1)) {
-				
-			BackToPosition();
-		
-		}
+
 	}
 
 	void Drag(){
@@ -135,6 +122,9 @@ public class ClickNDrag_script : MonoBehaviour {
 		//unselect the bullet
 		isSelected = false;
 		
+		//play audio 
+			shoot.Play();
+
 		}
 		//back to the origin position when the force is less than 200
 		else if (springForce < 200){
@@ -144,7 +134,7 @@ public class ClickNDrag_script : MonoBehaviour {
 		}
 	}
 
-	void BackToPosition(){
+	public void BackToPosition(){
 
 		//zero out all forces
 			gameObject.rigidbody.velocity = Vector3.zero;
@@ -170,4 +160,6 @@ public class ClickNDrag_script : MonoBehaviour {
 	void OnMouseExit(){
 		isHovering = false;
 	}
+
+
 }

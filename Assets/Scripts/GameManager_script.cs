@@ -11,6 +11,9 @@ public class GameManager_script : MonoBehaviour {
 	int score = 0;
 	public Text score_T;
 
+	//Vars for lose screen
+	public GameObject loseScreen;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -20,10 +23,15 @@ public class GameManager_script : MonoBehaviour {
 	void Update () {
 		//keep the HP and Score Updated
 		gateHP_T.text = "Gate Condition: " + gateHP + "%";
-		score_T.text = "Score: " + score;
+		score_T.text = "Coins: " + score;
 
 		if (score >= 500) {
 			//Application.LoadLevel(2);	
+		}
+
+		if (gateHP < 1) {
+			loseScreen.gameObject.SetActive(true);
+			Time.timeScale = 0.0f;
 		}
 	}
 
@@ -34,6 +42,11 @@ public class GameManager_script : MonoBehaviour {
 
 	public void AddScore(){
 		//increases the score
-		score += 100;
+		score += 50;
+	}
+
+	public void Restart(){
+		Application.LoadLevel (0);
+
 	}
 }

@@ -5,6 +5,7 @@ public class EnemyAttack_script : MonoBehaviour {
 	//Vars for refencing this to GameManager
 	GameManager_script GMs;
 	GameObject GM;
+	EnemyMovement_script EMs;
 
 
 	float attackCount = 1f;
@@ -13,9 +14,10 @@ public class EnemyAttack_script : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		//refence this GM to GameManager
+		//refence this GMs to GameManager
 		GM = GameObject.FindGameObjectWithTag ("GM");
 		GMs = GM.GetComponent<GameManager_script>();
+		EMs = gameObject.GetComponent<EnemyMovement_script>();
 	}
 	
 	// Update is called once per frame
@@ -42,6 +44,7 @@ public class EnemyAttack_script : MonoBehaviour {
 		//When this enemy touches the gate
 		if (C.tag == "wall") {
 			isTouchingTheGate = true;
+			EMs.isAttacking = true;
 
 		}
 	}

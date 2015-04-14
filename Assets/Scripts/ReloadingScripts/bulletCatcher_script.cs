@@ -67,7 +67,8 @@ public class bulletCatcher_script : MonoBehaviour {
 			Instantiate(oilExplosion, new Vector3(C.gameObject.transform.position.x, 0.01f, C.gameObject.transform.position.z), new Quaternion());
 			Destroy(C.gameObject);
 			targetOil = GameObject.FindGameObjectWithTag("oilOnGround");
-			Invoke("turnOnCleaning", 2.5f);
+			Invoke("turnOnCleaning", 2f);
+			Invoke("DestroyOil",5);
 		}
 
 	}
