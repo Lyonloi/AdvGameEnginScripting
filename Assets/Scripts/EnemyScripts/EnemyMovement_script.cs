@@ -96,17 +96,7 @@ public class EnemyMovement_script : MonoBehaviour {
 
 
 		}
-		//if Collider C is a bullet, get destoried 
-		if (C.tag == "bullet"){
 
-			Destroy(gameObject);
-
-			//add Score
-			GMs.AddScore();
-
-			//play the audio
-			PlayAudio();
-		}
 
 
 		if (C.tag == "oilOnGround") {

@@ -30,7 +30,7 @@ public class Explostion_script : MonoBehaviour {
 	//if Collider C is an enemy, destory it
 	void OnTriggerEnter(Collider C){
 		if (C.tag == "enemy") {
-
+			//play the audio
 			EMs.PlayAudio();
 			//Destroy the enemy
 			Destroy(C.gameObject);
