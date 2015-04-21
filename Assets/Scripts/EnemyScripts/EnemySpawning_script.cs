@@ -33,9 +33,9 @@ public class EnemySpawning_script : MonoBehaviour {
 
 	//spawn an emeny at a ramdom spawnpoint
 	void SpawnAnEnemy (){
+		//get a random # based on the length of the array
 		pointSelect = Random.Range (0, spawnpoints.Length);
-
-		Debug.Log (spawnpoints.Length);
+		//Instantiate a prefad based on the number just got
 		Instantiate(SpawnTarget, spawnpoints[pointSelect].position, spawnpoints[pointSelect].rotation);
 
 		
