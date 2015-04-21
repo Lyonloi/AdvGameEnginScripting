@@ -7,7 +7,7 @@ public class EnemyAttack_script : MonoBehaviour {
 	GameObject GM;
 	EnemyMovement_script EMs;
 
-
+	//vars for attacking
 	float attackCount = 1f;
 	bool isTouchingTheGate = false;
 
