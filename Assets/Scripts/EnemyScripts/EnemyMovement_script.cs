@@ -9,11 +9,6 @@ public class EnemyMovement_script : MonoBehaviour {
 	GameManager_script GMs;
 	GameObject GM;
 
-	//vars for getting current position
-	Transform CurrentPosition;
-	float tempX;
-	float tempY;
-	float tempZ;
 
 	//var for controlling enemy's speed 
 	public float movingSpeed = 0.05f;
@@ -32,12 +27,7 @@ public class EnemyMovement_script : MonoBehaviour {
 		GM = GameObject.FindGameObjectWithTag ("GM");
 		GMs = GM.GetComponent<GameManager_script>();
 
-		//get the current position
-		CurrentPosition = gameObject.transform;
-		//store up the vars
-		tempX = CurrentPosition.position.x;
-		tempY = CurrentPosition.position.y;
-		tempZ = CurrentPosition.position.z;
+
 
 		//referece the audio source
 		scored = gameObject.GetComponent<AudioSource> ();

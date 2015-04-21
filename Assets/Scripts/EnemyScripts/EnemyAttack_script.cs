@@ -52,6 +52,6 @@ public class EnemyAttack_script : MonoBehaviour {
 
 	void Attack(){
 		//HP goes down
-		GMs.HPDown ();
+		GMs.HPDown (1);
 	}
 }

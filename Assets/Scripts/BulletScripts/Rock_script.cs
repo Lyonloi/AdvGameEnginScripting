@@ -13,6 +13,9 @@ public class Rock_script : MonoBehaviour {
 	GameObject enemy;
 	EnemyMovement_script EMs;
 
+	//vars for referening a boss
+	Boss_script Bs;
+
 	// Use this for initialization
 	void Start () {
 		//refence this GM to GameManager
@@ -39,13 +42,18 @@ public class Rock_script : MonoBehaviour {
 			CnDs.BackToPosition();
 		}
 
-		if (C.tag == "enemy") {
+		if (C.tag == "enemy" && gameObject.tag == "bullet") {
 			//play the audio
 			EMs.PlayAudio();
 			//Destroy the enemy
 			Destroy(C.gameObject);
 			//add Score
 			GMs.AddScore();		
+		}
+
+		if (C.tag == "boss" && gameObject.tag == "bullet") {
+			Bs = C.gameObject.GetComponent<Boss_script>();
+			Bs.hp --;
 		}
 	}
 

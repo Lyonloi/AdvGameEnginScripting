@@ -35,9 +35,9 @@ public class GameManager_script : MonoBehaviour {
 		}
 	}
 
-	public void HPDown (){
+	public void HPDown (int a){
 		//decreases the gate HP
-		gateHP--;
+		gateHP -= a;
 	}
 
 	public void AddScore(){

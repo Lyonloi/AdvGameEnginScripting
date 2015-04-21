@@ -50,12 +50,12 @@
      <Compile Include="Assets\Scripts\BulletScripts\Explostion_script.cs" />
      <Compile Include="Assets\Scripts\BulletScripts\Rock_script.cs" />
      <Compile Include="Assets\Scripts\ClickNDrag_script.cs" />
+     <Compile Include="Assets\Scripts\EnemyScripts\Boss_script.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\EnemyAttack_script.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\EnemyMovement_script.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\EnemySpawning_script.cs" />
      <Compile Include="Assets\Scripts\EventListener.cs" />
      <Compile Include="Assets\Scripts\GameManager_script.cs" />
-     <Compile Include="Assets\Scripts\MainMenu_script.cs" />
      <Compile Include="Assets\Scripts\ReloadingScripts\Cannons_script.cs" />
      <Compile Include="Assets\Scripts\ReloadingScripts\bulletCatcher_script.cs" />
      <Compile Include="Assets\Scripts\delegate21.cs" />
@@ -64,7 +64,7 @@
      <None Include="Assets\Shaders\CloudShader.shader" />
      <None Include="Assets\Shaders\waterShader.shader" />
  <Reference Include="Assembly-UnityScript-firstpass">
- <HintPath>C:/Users/HonPan/Documents/GitHub/AdvGameEngineScripting/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
+ <HintPath>C:/Users/LYON/Documents/GitHub/AdvGameEngineScripting/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
