@@ -35,6 +35,7 @@ public class Boss_script : MonoBehaviour {
 
 		//refence to the audio
 		audioMan = GameObject.FindGameObjectWithTag ("stayEnemy");
+		EMs = audioMan.gameObject.GetComponent<EnemyMovement_script>();
 	}
 	
 	// Update is called once per frame
@@ -60,7 +61,7 @@ public class Boss_script : MonoBehaviour {
 		}
 
 		if (hp <= 0) {
-			audioMan.
+			EMs.PlayAudio();
 			Destroy(gameObject);
 		}
 	}
@@ -84,7 +85,7 @@ public class Boss_script : MonoBehaviour {
 	}
 
 	public void PlayAudio(){
-		scored.Play ();
+		EMs.PlayAudio();
 	}
 
 	void OnTriggerEnter(Collider C){
