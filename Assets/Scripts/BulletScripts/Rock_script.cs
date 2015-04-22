@@ -42,6 +42,10 @@ public class Rock_script : MonoBehaviour {
 			CnDs.BackToPosition();
 		}
 
+		if (C.tag == "bullet" && CnDs.isSelected == true) {
+			Destroy(C.gameObject);
+		}
+
 		if (C.tag == "enemy" && gameObject.tag == "bullet") {
 			//play the audio
 			EMs.PlayAudio();

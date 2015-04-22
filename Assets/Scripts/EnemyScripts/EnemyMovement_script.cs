@@ -68,7 +68,7 @@ public class EnemyMovement_script : MonoBehaviour {
 	void OnTriggerEnter(Collider C){
 
 		//if this unit touches any of these trigger 
-		if (isMoving == true && C.tag == "wall"||C.tag == "enemy"||C.tag == "rock") {
+		if (isMoving == true && C.tag == "wall"||C.tag == "enemy"||C.tag == "rock"||C.tag == "boss") {
 			//stop moving
 			isMoving = false;
 			gameObject.rigidbody.useGravity = true;
@@ -98,7 +98,7 @@ public class EnemyMovement_script : MonoBehaviour {
 		if (C.tag == "oilOnGround") {
 			movingSpeed = 1f;
 		}
-		if (C.tag == "enemy") {
+		if (C.tag == "enemy" || C.tag == "boss") {
 			Invoke("MoveAgain",1f);
 		}
 	}

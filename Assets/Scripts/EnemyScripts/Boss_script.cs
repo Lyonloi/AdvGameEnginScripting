@@ -19,13 +19,15 @@ public class Boss_script : MonoBehaviour {
 	public bool isAttacking = false;
 
 	//var for controlling enemy's speed 
-	public float movingSpeed = 0.05f;
+	public float movingSpeed = 0.5f;
 	
 	//var for targeting a gameobject to destory
 	public GameObject attackTarget;
 
 	//var for its HP
 	public int hp = 5;
+
+
 
 	// Use this for initialization
 	void Start () {
@@ -73,7 +75,7 @@ public class Boss_script : MonoBehaviour {
 
 	void Move(){
 		//make this unit moves 
-		transform.Translate (Vector3.right * Time.deltaTime * movingSpeed);
+		transform.Translate (Vector3.back * Time.deltaTime * movingSpeed);
 	}
 
 	void DestoryObstacle(){
@@ -89,9 +91,50 @@ public class Boss_script : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider C){
-	
+
+		if (isMoving == true && C.tag == "wall"||C.tag == "boss") {
+			//stop moving
+			isMoving = false;
+			gameObject.rigidbody.useGravity = true;
+			
+			
+			//if Collider C is a rock
+			if (C.tag == "rock" && isAttacking != true){
+				//make Collider C as the attackTarget and destory it after a few second
+				attackTarget = C.gameObject;
+				DestoryObstacle();
+
+				
+			}
+			
+			
+		}
+
+
+		if (C.tag == "wall") {
+			isTouchingTheGate = true;
+			isAttacking = true;
+			
+		}
+		
+		if (C.tag == "oilOnGround") {
+			movingSpeed = 0.2f;
+		}
 	}
 
+	void MoveAgain(){
+		//make this unit moves again
+		gameObject.transform.Translate(Vector3.back *Time.deltaTime);
+		isMoving = true;
+	}
 
+	void OnTriggerExit(Collider C){
+		if (C.tag == "oilOnGround") {
+			movingSpeed = 0.5f;
+		}
+		if (C.tag == "enemy" || C.tag == "boss") {
+			Invoke("MoveAgain",1f);
+		}
+	}
 
 }

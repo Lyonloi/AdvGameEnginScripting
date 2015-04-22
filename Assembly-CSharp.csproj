@@ -55,7 +55,9 @@
      <Compile Include="Assets\Scripts\EnemyScripts\EnemyMovement_script.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\EnemySpawning_script.cs" />
      <Compile Include="Assets\Scripts\EventListener.cs" />
+     <Compile Include="Assets\Scripts\Fading_script.cs" />
      <Compile Include="Assets\Scripts\GameManager_script.cs" />
+     <Compile Include="Assets\Scripts\MainMenu_Script.cs" />
      <Compile Include="Assets\Scripts\ReloadingScripts\Cannons_script.cs" />
      <Compile Include="Assets\Scripts\ReloadingScripts\bulletCatcher_script.cs" />
      <Compile Include="Assets\Scripts\delegate21.cs" />

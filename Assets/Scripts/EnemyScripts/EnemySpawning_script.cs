@@ -40,4 +40,10 @@ public class EnemySpawning_script : MonoBehaviour {
 
 		
 	}
+
+	void OnTriggerStay(Collider C){
+
+		SpawningCount = 0;
+
+	}
 }

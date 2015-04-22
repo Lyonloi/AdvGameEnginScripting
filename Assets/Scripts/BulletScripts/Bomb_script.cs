@@ -17,7 +17,8 @@ public class Bomb_script : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider C){
-		if (C.tag != "ground" && C.tag != "wall" && C.tag != "enemy" && C.tag != "rock" && C.tag != "oilOnGround") {
+		if (C.tag != "ground" && C.tag != "wall" && C.tag != "enemy" && C.tag != "rock" && C.tag != "oilOnGround" && C.tag != "boss") {
+			Debug.Log(C.gameObject.tag);
 			CnDs.BackToPosition();
 		}
 	}
