@@ -161,5 +161,10 @@ public class ClickNDrag_script : MonoBehaviour {
 		isHovering = false;
 	}
 
+	void OnTriggerEnter(Collider C){
+		if (C.tag == "plaform") {
+			BackToPosition();
+		}
 
+	}
 }

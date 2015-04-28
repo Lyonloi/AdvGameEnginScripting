@@ -15,13 +15,17 @@ public class MainMenu_Script : MonoBehaviour {
 
 	public void NextLevel(){
 
-			//fade out the game and load a new level
-			float fadeTime = GameObject.Find ("_GM").GetComponent<Fading_script> ().BeginFade (1);
+		StartCoroutine (Go ());
 			
-			Application.LoadLevel (1);
 	}
 
+	IEnumerator Go(){
 
+		//fade out the game and load a new level
+		float fadeTime = GameObject.Find ("_GM").GetComponent<Fading_script> ().BeginFade (1);
+		yield return new WaitForSeconds(fadeTime);
+		Application.LoadLevel (1);
+	}
 
 
 

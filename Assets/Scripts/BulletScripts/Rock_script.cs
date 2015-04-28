@@ -52,7 +52,7 @@ public class Rock_script : MonoBehaviour {
 			//Destroy the enemy
 			Destroy(C.gameObject);
 			//add Score
-			GMs.AddScore();		
+			GMs.AddScore(50);		
 		}
 
 		if (C.tag == "boss" && gameObject.tag == "bullet") {

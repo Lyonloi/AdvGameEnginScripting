@@ -27,6 +27,9 @@ public class Boss_script : MonoBehaviour {
 	//var for its HP
 	public int hp = 5;
 
+	//var for changing material
+	public Material normal;
+	public Material hit;
 
 
 	// Use this for initialization
@@ -65,6 +68,7 @@ public class Boss_script : MonoBehaviour {
 		if (hp <= 0) {
 			EMs.PlayAudio();
 			Destroy(gameObject);
+			GMs.AddScore(200);
 		}
 	}
 
@@ -97,19 +101,16 @@ public class Boss_script : MonoBehaviour {
 			isMoving = false;
 			gameObject.rigidbody.useGravity = true;
 			
-			
-			//if Collider C is a rock
-			if (C.tag == "rock" && isAttacking != true){
-				//make Collider C as the attackTarget and destory it after a few second
-				attackTarget = C.gameObject;
-				DestoryObstacle();
+		}
 
-				
-			}
+		//if Collider C is a rock
+		if (C.tag == "rock" && isAttacking != true){
+			//make Collider C as the attackTarget and destory it after a few second
+			attackTarget = C.gameObject;
+			DestoryObstacle();
 			
 			
 		}
-
 
 		if (C.tag == "wall") {
 			isTouchingTheGate = true;
@@ -120,6 +121,17 @@ public class Boss_script : MonoBehaviour {
 		if (C.tag == "oilOnGround") {
 			movingSpeed = 0.2f;
 		}
+
+		if (C.tag == "bullet" || C.tag == "bomb" || C.tag == "explosion" || C.tag == "oil") {
+			hp -= 1;
+			StartCoroutine (GetHit());
+		}
+	}
+
+	IEnumerator GetHit (){
+		gameObject.renderer.material = hit;
+		yield return new WaitForSeconds(0.3F);
+		gameObject.renderer.material = normal;
 	}
 
 	void MoveAgain(){

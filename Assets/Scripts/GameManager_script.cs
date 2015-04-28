@@ -40,9 +40,9 @@ public class GameManager_script : MonoBehaviour {
 		gateHP -= a;
 	}
 
-	public void AddScore(){
+	public void AddScore(int S){
 		//increases the score
-		score += 50;
+		score += S;
 	}
 
 	public void Restart(){
