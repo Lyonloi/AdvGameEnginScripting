@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\BulletScripts\Bomb_script.cs" />
      <Compile Include="Assets\Scripts\BulletScripts\Explostion_script.cs" />
+     <Compile Include="Assets\Scripts\BulletScripts\Oil_script.cs" />
      <Compile Include="Assets\Scripts\BulletScripts\Rock_script.cs" />
      <Compile Include="Assets\Scripts\ClickNDrag_script.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\Boss_script.cs" />

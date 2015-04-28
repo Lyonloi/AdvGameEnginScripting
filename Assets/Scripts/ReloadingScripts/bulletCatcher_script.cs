@@ -9,8 +9,7 @@ public class bulletCatcher_script : MonoBehaviour {
 	//reference the explosion prefeb
 	public GameObject bombExplosion;
 	public GameObject oilExplosion;
-	public GameObject targetOil;
-	bool isCleaning = false;
+
 
 
 	// Use this for initialization
@@ -20,29 +19,10 @@ public class bulletCatcher_script : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (isCleaning == true) {
-			CleanUpOil();
-		}
+
 	}
 
-	void CleanUpOil(){
-		// if there is a oil, clean it up;
-		if (targetOil != null) {
-			targetOil.transform.Translate(Vector3.down*Time.deltaTime*0.25f);
 
-		}
-	}
-
-	void DestroyOil(){
-		if (targetOil != null) {
-			Destroy (targetOil);
-			isCleaning = false;
-		}
-	}
-
-	void turnOnCleaning(){
-		isCleaning = true;
-	}
 
 	void OnTriggerEnter(Collider C){
 		//if the ground catch a rock
@@ -66,9 +46,7 @@ public class bulletCatcher_script : MonoBehaviour {
 			Cs.OilOut();
 			Instantiate(oilExplosion, new Vector3(C.gameObject.transform.position.x, 0.01f, C.gameObject.transform.position.z), new Quaternion());
 			Destroy(C.gameObject);
-			targetOil = GameObject.FindGameObjectWithTag("oilOnGround");
-			Invoke("turnOnCleaning", 2f);
-			Invoke("DestroyOil",5);
+
 		}
 
 	}
