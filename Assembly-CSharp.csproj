@@ -60,6 +60,7 @@
      <Compile Include="Assets\Scripts\GameManager_script.cs" />
      <Compile Include="Assets\Scripts\MainMenu_Script.cs" />
      <Compile Include="Assets\Scripts\ReloadingScripts\Cannons_script.cs" />
+     <Compile Include="Assets\Scripts\ReloadingScripts\Transparency.cs" />
      <Compile Include="Assets\Scripts\ReloadingScripts\bulletCatcher_script.cs" />
      <Compile Include="Assets\Scripts\delegate21.cs" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />

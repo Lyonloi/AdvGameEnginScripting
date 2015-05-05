@@ -12,6 +12,9 @@ public class Cannons_script : MonoBehaviour {
 	public GameObject bomb;
 	public GameObject oil;
 
+
+
+
 	//referencing 3 cannons
 	public Transform cannon1;
 	public Transform cannon2;

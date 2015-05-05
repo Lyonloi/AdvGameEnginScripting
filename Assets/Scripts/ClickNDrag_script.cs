@@ -42,6 +42,7 @@ public class ClickNDrag_script : MonoBehaviour {
 	void Start () {
 
 
+
 		//store the original position of the bullet
 		Origin = gameObject.transform.position;
 
@@ -157,6 +158,9 @@ public class ClickNDrag_script : MonoBehaviour {
 		gameObject.transform.rotation = Quaternion.identity;
 		springForce = 0;
 
+
+		//reset isShooted
+		isShooted = false;
 	}
 
 	void OnMouseEnter(){
