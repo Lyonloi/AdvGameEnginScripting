@@ -16,7 +16,17 @@ Platform assembly: C:\Users\HonPan\Documents\GitHub\AdvGameEngineScripting\testB
 Loading C:\Users\HonPan\Documents\GitHub\AdvGameEngineScripting\testBuild_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
 Platform assembly: C:\Users\HonPan\Documents\GitHub\AdvGameEngineScripting\testBuild_Data\Managed\UnityEngine.UI.dll (this message is harmless)
 Loading C:\Users\HonPan\Documents\GitHub\AdvGameEngineScripting\testBuild_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.511 seconds
+- Completed reload, in  0.552 seconds
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
+Platform assembly: C:\Users\HonPan\Documents\GitHub\AdvGameEngineScripting\testBuild_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\HonPan\Documents\GitHub\AdvGameEngineScripting\testBuild_Data\Managed\System.dll (this message is harmless)
+WARNING: Shader Unsupported: 'Hidden/TerrainEngine/Details/BillboardWavingDoublePass' - Pass '' shader state not supported
+UnloadTime: 35.278442 ms
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 1363.
+Total: 1.298604 ms (FindLiveObjects: 0.061579 ms CreateObjectMapping: 0.020526 ms MarkObjects: 0.366458 ms  DeleteObjects: 0.282541 ms)
+
+WARNING: Shader Unsupported: 'Hidden/TerrainEngine/Details/BillboardWavingDoublePass' - Pass '' shader state not supported

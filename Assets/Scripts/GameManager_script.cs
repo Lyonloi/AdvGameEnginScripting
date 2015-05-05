@@ -57,4 +57,9 @@ public class GameManager_script : MonoBehaviour {
 	public void ToMenu(){
 		Application.LoadLevel (0);
 	}
+
+	public void QuitGame(){
+
+		Application.Quit ();
+	}
 }

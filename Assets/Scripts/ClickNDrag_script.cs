@@ -31,6 +31,7 @@ public class ClickNDrag_script : MonoBehaviour {
 	//vars for checking if the mouse is hovering and selected
 	bool isHovering = false;
 	public bool isSelected = false;
+	bool isShooted = false;
 
 
 
@@ -39,6 +40,7 @@ public class ClickNDrag_script : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
 
 		//store the original position of the bullet
 		Origin = gameObject.transform.position;
@@ -58,12 +60,12 @@ public class ClickNDrag_script : MonoBehaviour {
 
 
 		//if the mouse is hovering this object
-		if (isHovering == true) {
+		if (isHovering == true && isShooted == false) {
 			Drag();
 		}
 
 		//make the hovered bullet selected
-		if (Input.GetMouseButtonDown(0) && isHovering){
+		if (Input.GetMouseButtonDown(0) && isHovering && isShooted == false){
 			this.isSelected = true;
 
 		}
@@ -72,7 +74,7 @@ public class ClickNDrag_script : MonoBehaviour {
 		StartDragging ();
 
 		//When releasing mouse click, run spring function
-		if(Input.GetMouseButtonUp(0) && isSelected){
+		if(Input.GetMouseButtonUp(0) && isSelected && isShooted == false){
 
 			Spring();
 		}
@@ -94,7 +96,7 @@ public class ClickNDrag_script : MonoBehaviour {
 
 	void StartDragging(){
 		// increase the drag force
-			if (isSelected == true) {
+		if (isSelected == true) {
 						//limit the spring force
 						if (springForce < MaxForce) {
 								//simulate the slingshot, move back, add force
@@ -117,6 +119,10 @@ public class ClickNDrag_script : MonoBehaviour {
 		//add the force to the bullet
 		gameObject.rigidbody.AddForce((Origin - gameObject.transform.position).normalized * springForce);
 		gameObject.rigidbody.AddForce(Vector3.up * springForce/8);
+
+		//make the bullet marked as shooted
+		isShooted = true;
+
 		//enable gravity
 		gameObject.rigidbody.useGravity = true;
 		//unselect the bullet
@@ -166,5 +172,8 @@ public class ClickNDrag_script : MonoBehaviour {
 			BackToPosition();
 		}
 
+		if (C.tag == "rock" && gameObject.tag == "bullet") {
+			Destroy(C.gameObject);	
+		}
 	}
 }
