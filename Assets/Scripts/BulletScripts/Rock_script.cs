@@ -55,10 +55,7 @@ public class Rock_script : MonoBehaviour {
 			GMs.AddScore(50);		
 		}
 
-		if (C.tag == "boss" && gameObject.tag == "bullet") {
-			Bs = C.gameObject.GetComponent<Boss_script>();
-			Bs.hp --;
-		}
+
 	}
 
 

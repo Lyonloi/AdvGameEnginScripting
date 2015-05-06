@@ -26,6 +26,7 @@ public class Boss_script : MonoBehaviour {
 
 	//var for its HP
 	public int hp = 5;
+	public bool isHurt = false;
 
 	//var for changing material
 	public Material normal;
@@ -96,7 +97,7 @@ public class Boss_script : MonoBehaviour {
 
 	void OnTriggerEnter(Collider C){
 
-		if (isMoving == true && C.tag == "wall"||C.tag == "boss") {
+		if (isMoving == true && (C.tag == "wall"||C.tag == "boss")) {
 			//stop moving
 			isMoving = false;
 			gameObject.rigidbody.useGravity = true;
@@ -123,8 +124,20 @@ public class Boss_script : MonoBehaviour {
 		}
 
 		if (C.tag == "bullet" || C.tag == "bomb" || C.tag == "explosion" || C.tag == "oil") {
-			hp -= 1;
+
+			StartCoroutine (HPdown());
 			StartCoroutine (GetHit());
+		}
+	}
+
+	IEnumerator HPdown(){
+		isHurt = true;
+		if (isHurt = true) {
+			hp -= 1;
+		}
+		yield return new WaitForSeconds (1f);
+		if (isHurt = true) {
+			isHurt = false;
 		}
 	}
 

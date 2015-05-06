@@ -31,7 +31,7 @@ public class ClickNDrag_script : MonoBehaviour {
 	//vars for checking if the mouse is hovering and selected
 	bool isHovering = false;
 	public bool isSelected = false;
-	bool isShooted = false;
+	public bool isShooted = false;
 
 
 
